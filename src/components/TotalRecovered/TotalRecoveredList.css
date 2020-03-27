@@ -1,0 +1,47 @@
+.total-recovered-list {
+  background-color: #222;
+}
+
+.total-recovered-list__header {
+  display: flex;
+  margin-bottom: 10px;
+  min-height: 180px;
+}
+
+.total-recovered-list__header-inner {
+  align-self: center;
+  text-align: center;
+  flex: 1;
+}
+
+.total-recovered-list__title {
+  color: #fff;
+  margin: 0;
+}
+
+.total-recovered-list__count {
+  color: #70a800;
+  margin: 0;
+}
+
+.total-recovered-list__wrapper {
+  overflow: auto;
+  padding: 0 5px;
+  height: 800px;
+}
+
+.total-recovered-list__region {
+  padding: 5px;
+  margin: 0;
+  border-bottom: 1px solid #5c5c5c;
+  cursor: pointer;
+  user-select: none;
+}
+
+.total-recovered-list__region-name {
+  color: #bdbdbd;
+}
+
+.total-recovered-list__recovered-count {
+  color: #70a800;
+}

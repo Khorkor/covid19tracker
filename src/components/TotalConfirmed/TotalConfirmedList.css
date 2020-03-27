@@ -1,0 +1,59 @@
+.confirmed-case-list {
+  background-color: #222;
+  overflow-wrap: break-word;
+}
+
+.total-confirmed {
+  background-color: #222;
+  min-height: 180px;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.total-confirmed__inner-container {
+  align-self: center;
+  text-align: center;
+  flex: 1;
+}
+
+.total-confirmed__title {
+  color: #bdbdbd;
+  margin: 0;
+}
+.total-confirmed__count {
+  color: #e60000;
+  margin: 0;
+}
+
+.confirmed-case-list__title {
+  color: #d6d6d6;
+  border-bottom: 1px solid #5c5c5c;
+  text-align: center;
+  padding: 0.325rem;
+}
+
+.confirmed-case-list__wrapper {
+  overflow: auto;
+  padding: 0 5px;
+  height: 800px;
+}
+
+.confirmed-case-list__region {
+  padding: 5px;
+  margin: 0;
+  border-bottom: 1px solid #5c5c5c;
+  cursor: pointer;
+  user-select: none;
+}
+
+.confirmed-case-list__region.active {
+  background-color: #1061a6;
+}
+
+.confirmed-case-list__region-name {
+  color: #d6d6d6;
+}
+
+.confirmed-case-list__confirmed-count {
+  color: #e60000;
+}
