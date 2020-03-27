@@ -1,0 +1,51 @@
+.total-deaths-list {
+  background-color: #222;
+}
+
+.total-deaths-list__header {
+  display: flex;
+  margin-bottom: 10px;
+  min-height: 180px;
+}
+
+.total-deaths-list__header-inner {
+  align-self: center;
+  text-align: center;
+  flex: 1;
+}
+
+.total-deaths-list__title {
+  color: #fff;
+  margin: 0;
+}
+
+.total-deaths-list__count {
+  color: #fff;
+  margin: 0;
+}
+
+.total-deaths-list__wrapper {
+  overflow: auto;
+  padding: 0 5px;
+  height: 800px;
+}
+
+.total-deaths-list__region {
+  padding: 5px;
+  margin: 0;
+  border-bottom: 1px solid #5c5c5c;
+  cursor: pointer;
+  user-select: none;
+}
+
+.total-deaths-list__region.active {
+  background-color: #1061a6;
+}
+
+.total-deaths-list__region-name {
+  color: #bdbdbd;
+}
+
+.total-deaths-list__deaths-count {
+  color: #fff;
+}
