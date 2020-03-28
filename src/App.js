@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-
+import DataTable from "../src/components/DataTable/DataaTable";
 import CovidReportProvider from "./components/CovidReportProvider/CovidReportProvider";
 
 import TotalConfirmedList from "./components/TotalConfirmed/TotalConfirmedList";
 import TotalDeathsList from "./components/TotalDeaths/TotalDeathsList";
 import TotalRecoveredList from "./components/TotalRecovered/TotalRecoveredList";
+
+import Map from "./components/Map/Map";
 
 //apollo client setup
 const client = new ApolloClient({
@@ -27,7 +29,7 @@ class App extends Component {
                 className="col-6 col-sm-6 col-md-6 col-lg-6"
                 style={{ alignSelf: "center", textAlign: "center" }}
               >
-                <h1 style={{ flex: 1 }}>Harita ya da filtrelenebilir tablo </h1>
+                <DataTable />
               </div>
               <div className="col-2 col-sm-2 col-md-2 col-lg-2">
                 <TotalDeathsList />
