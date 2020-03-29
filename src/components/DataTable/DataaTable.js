@@ -1,84 +1,107 @@
 import React from "react";
 import withCovidReports from "../CovidReportProvider/hoc/withCovidReports";
 
-import { MDBDataTable } from "mdbreact";
+import MUIDataTable from "mui-datatables";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
-const DataTable = ({ reports, selectedRegion, regionalDetails }) => {
-  const totalRecoveredListByStates = reports
-    .filter(report => report.recovered > 0)
-    .sort((a, b) => b.recovered - a.recovered)
-    .filter(
-      report => !selectedRegion || report.place.region === selectedRegion
-    );
-
-  {
-    totalRecoveredListByStates.map(({ place, recovered }, index) => (
-      <div key={index} className={"total-recovered-list__region"}>
-        <div className="total-recovered-list__region-name">
-          <strong>
-            {place.state && place.state !== place.region
-              ? `${place.state}, `
-              : ""}
-          </strong>
-          {place.region}
-        </div>
-      </div>
-    ));
-  }
-
-  const data = {
-    columns: [
-      {
-        label: "State, Region",
-        field: "State, Region",
-        sort: "asc",
-        width: 150
-      },
-      {
-        label: "Latitude",
-        field: "Latitude",
-        sort: "asc",
-        width: 270
-      },
-      {
-        label: "Longitude",
-        field: "Longitude",
-        sort: "asc",
-        width: 200
-      },
-      {
-        label: "Confirmed",
-        field: "Confirmed",
-        sort: "asc",
-        width: 100
-      },
-      {
-        label: "Active",
-        field: "Active",
-        sort: "asc",
-        width: 150
-      },
-      {
-        label: "Recovered",
-        field: "Recovered",
-        sort: "asc",
-        width: 100
-      },
-      {
-        label: "Deaths",
-        field: "Deaths",
-        sort: "asc",
-        width: 100
+const DataTable = ({ reports }) => {
+  const columns = [
+    {
+      name: "StateRegion",
+      label: "StateRegion",
+      options: {
+        filter: true,
+        sort: true
       }
-    ],
-    rows: [
-      {
-        Confirmed: `{place.confirmed}`
+    },
+    {
+      name: "Latitude",
+      label: "Latitude",
+      options: {
+        filter: true,
+        sort: true
       }
-    ]
+    },
+    {
+      name: "Longitude",
+      label: "Longitude",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "Confirmed",
+      label: "Confirmed",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "Active",
+      label: "Active",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "Recovered",
+      label: "Recovered",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "Deaths",
+      label: "Deaths",
+      options: {
+        filter: true,
+        sort: true
+      }
+    }
+  ];
+
+  const options = {
+    filterType: "checkbox"
   };
 
-  return <MDBDataTable striped bordered hover data={data} />;
+  const data = [
+    ...reports.map((data, id) => ({
+      StateRegion:
+        data.place.state && data.place.state !== data.place.region
+          ? data.place.state + " " + data.place.region
+          : data.place.region,
+      Latitude: data.place.latitude,
+      Longitude: data.place.longitude,
+      Confirmed: data.confirmed,
+      Active: data.active,
+      Recovered: data.recovered,
+      Deaths: data.deaths
+    }))
+  ];
+
+  const getMuiTheme = () =>
+    createMuiTheme({
+      overrides: {
+        MUIDataTableBodyCell: {
+          root: {
+            backgroundColor: "black",
+            color: "white"
+          }
+        }
+      }
+    });
+
+  return (
+    <div>
+      <MuiThemeProvider theme={getMuiTheme()}>
+        <MUIDataTable options={options} data={data} columns={columns} />
+      </MuiThemeProvider>
+    </div>
+  );
 };
 
 export default withCovidReports(DataTable);
