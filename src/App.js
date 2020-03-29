@@ -8,7 +8,6 @@ import TotalConfirmedList from "./components/TotalConfirmed/TotalConfirmedList";
 import TotalDeathsList from "./components/TotalDeaths/TotalDeathsList";
 import TotalRecoveredList from "./components/TotalRecovered/TotalRecoveredList";
 
-import Map from "./components/Map/Map";
 
 //apollo client setup
 const client = new ApolloClient({
