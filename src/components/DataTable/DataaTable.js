@@ -2,7 +2,8 @@ import React from "react";
 import withCovidReports from "../CovidReportProvider/hoc/withCovidReports";
 
 import MUIDataTable from "mui-datatables";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
 
 const DataTable = ({ reports }) => {
   const columns = [
@@ -65,7 +66,9 @@ const DataTable = ({ reports }) => {
   ];
 
   const options = {
-    filterType: "checkbox"
+    filterType: "checkbox",
+    print: false,
+    download: false
   };
 
   const data = [
@@ -83,24 +86,28 @@ const DataTable = ({ reports }) => {
     }))
   ];
 
-  const getMuiTheme = () =>
-    createMuiTheme({
-      overrides: {
-        MUIDataTableBodyCell: {
-          root: {
-            backgroundColor: "black",
-            color: "white"
-          }
+  const theme = createMuiTheme({
+    overrides: {
+      MuiPaper: {
+        root: {
+          maxHeight: "800px",
+          overflowY: "scroll"
         }
       }
-    });
-
+    },
+    palette: {
+      type: "dark",
+      primary: {
+        main: "#fff"
+      }
+    }
+  });
   return (
-    <div>
-      <MuiThemeProvider theme={getMuiTheme()}>
+    <ThemeProvider theme={theme}>
+      <Paper>
         <MUIDataTable options={options} data={data} columns={columns} />
-      </MuiThemeProvider>
-    </div>
+      </Paper>
+    </ThemeProvider>
   );
 };
 
